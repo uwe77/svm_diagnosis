@@ -39,7 +39,7 @@ RUN apt-get update && \
     libpython3-stdlib \
     libtool-bin \
     zip \
-    pip \
+    python3-pip \
     vim \
     curl \
     wget \
@@ -50,8 +50,8 @@ RUN apt-get update && \
     libopencv-dev \
     && rm -rf /var/lib/apt/lists/*
 
-###################################### python pkg###############################
-RUN apt-get update && apt-get upgrade pip -y && \
+###################################### Python Packages #####################################
+RUN apt-get update && apt-get upgrade -y && \
     pip install --upgrade pip && \
     pip install \
     numpy \
@@ -59,7 +59,8 @@ RUN apt-get update && apt-get upgrade pip -y && \
     scikit-learn \
     scikit-image \
     opencv-python \
-    opencv-python-headless
+    opencv-python-headless \
+    joblib
 
 ENV XLA_PYTHON_CLIENT_PREALLOCATE=false
 ENV HF_HUB_ENABLE_HF_TRANSFER=1
