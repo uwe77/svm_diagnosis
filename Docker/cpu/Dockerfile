@@ -55,6 +55,9 @@ RUN apt-get update && apt-get upgrade pip -y && \
     pip install --upgrade pip && \
     pip install \
     numpy \
+    matplotlib \
+    scikit-learn \
+    scikit-image \
     opencv-python \
     opencv-python-headless
 
