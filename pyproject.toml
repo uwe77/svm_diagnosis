@@ -5,12 +5,21 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "svm-diagnosis"
 version = "0.1.0"
-description = "A short description of your package"
+description = "A fault detection system using One-Class SVM for image classification"
 readme = "README.md"
 authors = [{ name = "Yu Wei. Chang", email = "uwe90711@gmail.com" }]
 license = { text = "MIT" }
-dependencies = ["numpy"]
-requires-python = ">=3.6"
+dependencies = [
+    "numpy",
+    "opencv-python",
+    "scikit-learn",
+    "joblib"  # Required for saving/loading SVM model
+]
+requires-python = ">=3.8"
 
 [tool.setuptools]
-packages = ["svm-diagnosis"]
+packages = ["svm_diagnosis"]
+
+[project.urls]
+Homepage = "https://github.com/uwe77/svm_diagnosis.git"
+Repository = "https://github.com/uwe77/svm_diagnosis.git"
