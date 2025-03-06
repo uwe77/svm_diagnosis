@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "svm-diagnosis"
+version = "0.1.0"
+description = "A short description of your package"
+readme = "README.md"
+authors = [{ name = "Yu Wei. Chang", email = "uwe90711@gmail.com" }]
+license = { text = "MIT" }
+dependencies = ["numpy"]
+requires-python = ">=3.6"
+
+[tool.setuptools]
+packages = ["svm-diagnosis"]
