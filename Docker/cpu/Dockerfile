@@ -60,7 +60,7 @@ RUN apt-get update && apt-get upgrade -y && \
     scikit-image \
     opencv-python \
     opencv-python-headless \
-    joblib
+    joblib  
 
 ENV XLA_PYTHON_CLIENT_PREALLOCATE=false
 ENV HF_HUB_ENABLE_HF_TRANSFER=1
