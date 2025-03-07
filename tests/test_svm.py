@@ -35,12 +35,9 @@ def test_load_good_data():
 # ---------------------------------------
 def test_train_svm():
     print("\n🔄 Training One-Class SVM (QP)...")
-    oc_svm, mean, std = svm(TRAIN_FOLDER, MODEL_PATH, retrain=True)
-
-    # Check if model file was saved
+    oc_svm, mean, std, knn_segmenter = svm(TRAIN_FOLDER, MODEL_PATH, retrain=True)  # FIXED
     if not os.path.exists(MODEL_PATH):
         raise FileNotFoundError(f"❌ Error: Model was not saved correctly at {MODEL_PATH}!")
-    
     print("✅ Model trained and saved successfully!")
 
 # ---------------------------------------
@@ -50,7 +47,7 @@ def test_load_svm():
     print("\n🔄 Loading trained model...")
     check_file_exists(MODEL_PATH)
     
-    oc_svm, mean, std = joblib.load(MODEL_PATH)
+    oc_svm, mean, std, knn_segmenter = joblib.load(MODEL_PATH)  # FIXED
     assert isinstance(oc_svm, OneClassSVM_QP), "❌ Error: Loaded model is not a OneClassSVM_QP instance!"
     print("✅ Model loaded successfully!")
 
@@ -91,7 +88,7 @@ if __name__ == "__main__":
     print("🚀 Running tests for One-Class SVM (QP)...\n")
 
     try:
-        test_load_good_data()
+        # test_load_good_data()
         test_train_svm()
         test_load_svm()
         test_good_image()
