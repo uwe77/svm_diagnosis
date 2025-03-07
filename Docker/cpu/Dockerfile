@@ -56,8 +56,6 @@ RUN apt-get update && apt-get upgrade -y && \
     pip install \
     numpy \
     matplotlib \
-    scikit-learn \
-    scikit-image \
     opencv-python \
     opencv-python-headless \
     joblib  \
