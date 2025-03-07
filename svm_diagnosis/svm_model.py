@@ -122,11 +122,12 @@ def svm(train_folder="dataset_folder", model_path="oc_svm_model.pkl", retrain=Fa
 # ---------------------------------------
 # Test a New Image with KNN Segmentation
 # ---------------------------------------
-def test_image(img_path, model_path="oc_svm_model.pkl", plot=True):
+def test_image(img_path, model_path="oc_svm_model.pkl", plot=True, save_path="knn_svm_output.png"):
     """
     Loads the trained model (oc_svm, mean, std, knn_segmenter) from 'model_path'.
     Applies NumPy KNN segmentation before HOG feature extraction.
     Predicts "Good" or "Bad (Anomaly)".
+    Saves or shows the segmented image.
     """
     oc_svm, mean, std, knn_segmenter = joblib.load(model_path)
 
@@ -135,18 +136,12 @@ def test_image(img_path, model_path="oc_svm_model.pkl", plot=True):
         raise FileNotFoundError(f"❌ Error: Could not load image {img_path}")
 
     image = cv2.resize(image, (128, 128))
-
     segmented_image = knn_segmenter.transform(image)
-
     features = extract_hog_features(segmented_image).reshape(1, -1)
     features = normalize_features(features, mean, std)
-
     prediction = oc_svm.predict(features)
     result_label = "Good" if prediction == 1 else "Bad (Anomaly)"
 
-    # ---------------------------------------
-    # PLOTTING FUNCTION
-    # ---------------------------------------
     if plot:
         fig, ax = plt.subplots(1, 2, figsize=(10, 5))
 
@@ -158,10 +153,13 @@ def test_image(img_path, model_path="oc_svm_model.pkl", plot=True):
         ax[1].set_title(f"KNN Segmentation (Predicted: {result_label})")
         ax[1].axis("off")
 
-        plt.show()
+        # ✅ Check if running in a GUI environment
+        print("🔄 Saving visualization instead of displaying...")
+        plt.savefig(save_path)  # ✅ Save to file instead
+        plt.close()  # ✅ Fix: Close figure to prevent memory issues
+        print(f"✅ Output saved to {save_path}")
 
     return result_label
-
 # ---------------------------------------
 # Example Usage (Uncomment to run)
 # ---------------------------------------

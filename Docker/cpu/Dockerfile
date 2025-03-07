@@ -37,7 +37,6 @@ RUN apt-get update && \
     cmake \
     lsb-release \
     libopencv-dev \
-    x11-apps \
     && rm -rf /var/lib/apt/lists/*
 
 ###################################### Python Packages #####################################
@@ -50,13 +49,6 @@ RUN apt-get update && apt-get upgrade -y && \
     opencv-python-headless \
     joblib  \
     cvxopt
-
-RUN echo "export DISPLAY=:0" >> /home/${NB_USER}/.bashrc && \
-    echo "export MPLBACKEND=Agg" >> /home/${NB_USER}/.bashrc && \
-    echo "X11 Forwarding enabled."
-
-# Allow the user to access X11
-RUN usermod -a -G video ${NB_USER}
 
 ENV XLA_PYTHON_CLIENT_PREALLOCATE=false
 ENV HF_HUB_ENABLE_HF_TRANSFER=1
