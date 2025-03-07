@@ -13,7 +13,6 @@ setup(
     install_requires=[
         "numpy",
         "opencv-python",
-        "scikit-learn",
         "joblib",
         "cvxopt"  # Added cvxopt for QP solver
     ],
