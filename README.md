@@ -1,9 +1,3 @@
-Here’s your **updated `README.md`** reflecting the current **One-Class SVM with Quadratic Programming (QP)** implementation. This README provides **installation instructions, usage examples, API documentation, and troubleshooting tips**.
-
----
-
-## **Updated `README.md`**
-```md
 # One-Class SVM for Anomaly Detection (Quadratic Programming)
 
 `svm_diagnosis` is a Python package for **anomaly detection using One-Class SVM with Quadratic Programming (QP)**. This package helps classify images as either "Good" or "Bad (Anomaly)" by learning from only "Good" images.
