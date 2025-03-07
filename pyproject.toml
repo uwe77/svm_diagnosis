@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "svm-diagnosis"
+name = "svm_diagnosis"
 version = "0.1.0"
 description = "A fault detection system using One-Class SVM for image classification"
 readme = "README.md"
