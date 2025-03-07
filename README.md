@@ -155,7 +155,6 @@ Feel free to **open an issue** or submit a **pull request** if you want to impro
 
 ## 📬 Contact
 For questions, contact **Yu Wei. Chang** at [uwe90711@gmail.com](mailto:uwe90711@gmail.com).
-```
 
 ---
 
