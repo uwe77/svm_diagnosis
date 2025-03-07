@@ -5,16 +5,23 @@ class OneClassSVM_QP:
     def __init__(self, kernel="rbf", nu=0.1, gamma=0.1):
         self.nu = nu
         self.gamma = gamma
-        self.kernel = self._get_kernel_function(kernel)
+        self.kernel_type = kernel  # Store kernel type explicitly
         self.alpha = None
         self.support_vectors = None
         self.decision_boundary = None
 
-    def _get_kernel_function(self, kernel_type):
-        if kernel_type == "rbf":
-            return lambda x, y: np.exp(-self.gamma * np.linalg.norm(x - y, axis=1) ** 2)
-        elif kernel_type == "linear":
-            return lambda x, y: np.dot(x, y.T)
+    def _rbf_kernel(self, x, y):
+        return np.exp(-self.gamma * np.linalg.norm(x - y, axis=1) ** 2)
+
+    def _linear_kernel(self, x, y):
+        return np.dot(x, y.T)
+
+    def kernel(self, x, y):
+        """Kernel function selector based on user choice."""
+        if self.kernel_type == "rbf":
+            return self._rbf_kernel(x, y)
+        elif self.kernel_type == "linear":
+            return self._linear_kernel(x, y)
         else:
             raise ValueError("Unsupported kernel type. Use 'rbf' or 'linear'.")
 

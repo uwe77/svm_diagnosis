@@ -13,7 +13,7 @@ def extract_hog_features(image):
 # Load only "good" images for training
 def load_good_data(folder):
     images = []
-    path = os.path.join(folder, "good")
+    path = folder
     for file in os.listdir(path):
         img_path = os.path.join(path, file)
         image = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
